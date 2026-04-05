@@ -1,4 +1,4 @@
-from unittest.mock import patch, call
+from unittest.mock import patch
 import pytest
 import credentials
 
@@ -18,6 +18,12 @@ def test_load_credentials_returns_tuple_when_both_exist():
 
 def test_load_credentials_returns_none_when_missing():
     with patch("credentials.keyring.get_password", return_value=None):
+        result = credentials.load_credentials()
+        assert result is None
+
+
+def test_load_credentials_returns_none_when_only_username_exists():
+    with patch("credentials.keyring.get_password", side_effect=["alice", None]):
         result = credentials.load_credentials()
         assert result is None
 
