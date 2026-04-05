@@ -2,12 +2,10 @@ import requests
 import urllib3
 from credentials import load_credentials
 
-# TODO: Fill in after capturing from browser dev tools (Task 4)
-# See README for capture instructions
-LOGIN_URL = "https://REPLACE_WITH_YOUR_FORTIGATE_IP/fgtauth"
-USERNAME_FIELD = "username"   # replace with actual form field name
-PASSWORD_FIELD = "password"   # replace with actual form field name
-VERIFY_SSL = False            # set True if portal has valid TLS cert
+LOGIN_URL = "http://fw.bits-pilani.ac.in:8090/fgtauth"
+USERNAME_FIELD = "Username"
+PASSWORD_FIELD = "Password"
+VERIFY_SSL = False
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
