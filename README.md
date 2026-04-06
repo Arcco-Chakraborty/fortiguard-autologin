@@ -4,9 +4,13 @@ Tired of logging into the BITS WiFi every time? Same.
 
 This tool sits in your system tray and automatically re-logs you in whenever FortiGuard kicks you out. No browser, no typing passwords, no pain. Just WiFi that works.
 
+Built for BITS Pilani. Works on Windows and macOS.
+
 ## Setup (takes 30 seconds)
 
-1. Grab `FortiGuardAutoLogin.exe` from [Releases](../../releases/latest)
+1. Grab the latest build from [Releases](../../releases/latest)
+   - **Windows**: `FortiGuardAutoLogin.exe`
+   - **Mac**: `FortiGuardAutoLogin-mac`
 2. Run it
 3. Enter your BITS WiFi credentials (the ones you use on the FortiGuard login page) and hit **Save & Start**
 
@@ -34,7 +38,7 @@ Right-click for options:
 
 ## Your credentials are safe
 
-Passwords are stored in Windows Credential Manager (the same place Chrome stores yours). Nothing is saved in plain text, nothing leaves your machine.
+Passwords are stored in your OS credential manager (Windows Credential Manager / macOS Keychain). Nothing is saved in plain text, nothing leaves your machine.
 
 ## Building from source
 

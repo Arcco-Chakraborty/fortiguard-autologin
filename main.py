@@ -52,7 +52,7 @@ def _test_auth() -> None:
     print("Probing for captive portal redirect...")
     result = _get_login_page()
     if not result:
-        print("No captive portal redirect — you may already be connected, or not on the college WiFi.")
+        print("No captive portal redirect — you may already be connected, or not on the BITS WiFi.")
         return
 
     login_url, html = result
