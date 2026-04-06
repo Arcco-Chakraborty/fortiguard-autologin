@@ -1,19 +1,24 @@
+import logging
 import threading
 import requests
 
+log = logging.getLogger(__name__)
+
 CHECK_URL = "https://www.google.com"
-POLL_INTERVAL = 30
-BACKOFF_SEQUENCE = [5, 15, 30, 60]
+POLL_INTERVAL = 10
+BACKOFF_SEQUENCE = [3, 5, 10, 30]
 
 
 class NetworkMonitor:
-    def __init__(self, on_disconnected, on_reconnected):
+    def __init__(self, on_disconnected, on_reconnected, on_keepalive=None):
         self.on_disconnected = on_disconnected
         self.on_reconnected = on_reconnected
+        self.on_keepalive = on_keepalive
         self._stop_event = threading.Event()
         self._thread = threading.Thread(target=self._run, daemon=True)
 
     def start(self) -> None:
+        log.info("Network monitor started (polling every %ds)", POLL_INTERVAL)
         self._thread.start()
 
     def stop(self) -> None:
@@ -41,4 +46,7 @@ class NetworkMonitor:
             elif not was_connected:
                 was_connected = True
                 self.on_reconnected()
+            elif self.on_keepalive:
+                # Already connected — send keepalive to maintain session
+                self.on_keepalive()
             self._stop_event.wait(POLL_INTERVAL)
