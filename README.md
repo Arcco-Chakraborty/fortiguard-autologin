@@ -1,10 +1,8 @@
 # FortiGuard Auto-Login
 
-Tired of logging into the BITS WiFi every 30 minutes? Same.
+Tired of logging into the BITS WiFi every time? Same.
 
 This tool sits in your system tray and automatically re-logs you in whenever FortiGuard kicks you out. No browser, no typing passwords, no pain. Just WiFi that works.
-
-Built for BITS Pilani. Works on any Windows laptop.
 
 ## Setup (takes 30 seconds)
 
@@ -54,6 +52,3 @@ pip install pyinstaller
 pyinstaller --onefile --windowed --name FortiGuardAutoLogin main.py
 ```
 
-## Contributing
-
-If this works for your campus too (or doesn't), open an issue. PRs welcome.
