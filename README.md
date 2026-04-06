@@ -12,6 +12,8 @@ Built for BITS Pilani. Works on Windows and macOS.
    - **Windows**: `FortiGuardAutoLogin.exe`
    - **Mac**: `FortiGuardAutoLogin-mac`
 2. Run it
+   - **Windows**: You'll see a "Windows protected your PC" popup. Click **More info** then **Run anyway**. This is normal for unsigned apps. It only happens the first time.
+   - **Mac**: If blocked, go to System Settings > Privacy & Security and click **Open Anyway**.
 3. Enter your BITS WiFi credentials (the ones you use on the FortiGuard login page) and hit **Save & Start**
 
 Done. It runs in the background now. It also auto-starts when you boot your laptop so you never have to think about it again.
