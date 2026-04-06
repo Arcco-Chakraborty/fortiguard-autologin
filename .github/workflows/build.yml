@@ -47,16 +47,19 @@ jobs:
 
       - name: Build app
         run: >
-          pyinstaller --onefile --windowed --name FortiGuardAutoLogin
+          pyinstaller --windowed --name FortiGuardAutoLogin
           --collect-data customtkinter
           --hidden-import pystray._darwin
           main.py
+
+      - name: Zip app bundle
+        run: cd dist && zip -r FortiGuardAutoLogin-mac.zip FortiGuardAutoLogin.app
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: dist/FortiGuardAutoLogin
+          path: dist/FortiGuardAutoLogin-mac.zip
 
   release:
     needs: [build-windows, build-macos]
@@ -74,12 +77,9 @@ jobs:
           name: macos-app
           path: dist-mac
 
-      - name: Rename macOS binary
-        run: mv dist-mac/FortiGuardAutoLogin dist-mac/FortiGuardAutoLogin-mac
-
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             dist-win/FortiGuardAutoLogin.exe
-            dist-mac/FortiGuardAutoLogin-mac
+            dist-mac/FortiGuardAutoLogin-mac.zip
